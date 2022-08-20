@@ -18,7 +18,9 @@ class MainWindow(Tk):
         self.btnpost.grid(row=4,column=5)
     def post(self):
         self.txt = self.postxt.get("0.1")
-        self.url = requests.post("https://ivivi.hu",data=self.txt)
+        self.url = requests.post("https://iviv.hu/api/v1/posts",data={"body":self.txt})
+        self.response = self.url.text
+        print(self.response)
 
 
 class HelpWindow(Tk):
