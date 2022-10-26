@@ -1,7 +1,6 @@
 from tkinter import ttk,Tk,dnd,Entry,Image,dialog,Frame,Label,Button,Menu,constants,Text
 import requests
 import sqlite3
-import selenium
 
 class MainWindow(Tk):
 
@@ -12,14 +11,13 @@ class MainWindow(Tk):
         self.lbltitle.grid(row=2,column=3)
         self.mainmenu = Menu()
         self.config(menu=self.mainmenu)
-        self.mainmenu.add_cascade(label="help",command=HelpWindow.mainloop)
         self.postxt = Text(self,width=50,height=30)
         self.postxt.grid(row=3, column=9)
         self.btnpost = ttk.Button(self,text="post",command=self.post)
         self.btnpost.grid(row=4,column=5)
     def post(self):
         self.txt = self.postxt.get("0.1")
-        self.url = requests.post("https://iviv.hu/api/v1/posts",data=self.txt)
+        self.url = requests.post("https://obese.cat/status_message/",data=self.txt)
         self.response = self.url.text
         print(self.response)
 
